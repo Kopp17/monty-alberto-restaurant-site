@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Blink UI Theme CSS
+   REQUIRED for @blinkdotnew/ui components to render correctly.
+   BlinkUIProvider adds .theme-{name} + .dark/.light to <html>,
+   activating the matching CSS variable set below.
+   ───────────────────────────────────────────────────────────────────────────── */
+@import '@blinkdotnew/ui/styles';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Full viewport chain so AppShell / Sidebar h-full + flex-1 SidebarContent work */
+  html {
+    height: 100%;
+  }
+
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+/* ── App palette (unlayered, after utilities) ─────────────────────────────────
+   Overrides @blinkdotnew/ui theme colors. @layer base loses specificity to UI themes.
+   Dark mode uses :root.dark + .theme-*.dark to match BlinkUIProvider.
+   ⚠️ AGENT MUST REPLACE placeholder values with a custom palette.
+   ──────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* ⚠️ AGENT MUST REPLACE: These are placeholder colors. You MUST define a custom palette before writing components. */
+  /* The template uses distinctive placeholder colors to force customization - do NOT use these in production! */
+
+  /*
+   * EXAMPLE PALETTES (use as inspiration, replace with your own):
+   *
+   * Modern SaaS (Business/Enterprise):
+   * --primary: 220 10% 20%;        (Charcoal #2D3748)
+   * --accent: 220 10% 30%;         (Lighter charcoal #4A5568)
+   *
+   * Bold Tech (Startups/Developer Tools):
+   * --primary: 348 83% 47%;        (Crimson #DA1E37)
+   * --accent: 348 83% 57%;         (Lighter crimson #F0213E)
+   *
+   * Quantum Rose (Creative/Design):
+   * --primary: 330 81% 50%;        (Pink #E6067A)
+   * --accent: 330 81% 70%;         (Lighter pink #F472B6)
+   *
+   * Rich Forest (Calm/Professional):
+   * --primary: 151 55% 25%;        (Pine #1C6340)
+   * --accent: 151 55% 35%;         (Lighter pine #288C5A)
+   *
+   * Sunset Warmth (Friendly/Welcoming):
+   * --primary: 24 95% 53%;         (Orange #F97316)
+   * --accent: 24 95% 63%;          (Lighter orange #FB923C)
+   */
+
+  /* Colors - REPLACE ALL VALUES BELOW with your custom palette */
+  --background: 41 100% 97%;
+  --foreground: 24 33% 18%;
+  --card: 41 100% 98%;
+  --card-foreground: 24 33% 18%;
+  --popover: 41 100% 97%;
+  --popover-foreground: 24 33% 18%;
+  /* ⚠️ PLACEHOLDER: Replace with your custom primary color (NOT generic teal, NOT blue) */
+  --primary: 17 69% 61%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 50% 89%;
+  --secondary-foreground: 24 33% 18%;
+  --muted: 33 50% 93%;
+  --muted-foreground: 24 15% 45%;
+  /* ⚠️ PLACEHOLDER: Replace with your custom accent color */
+  --accent: 113 39% 25%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 33 30% 85%;
+  --input: 33 30% 85%;
+  /* ⚠️ PLACEHOLDER: Replace with your custom ring color (usually matches primary) */
+  --ring: 17 69% 61%;
+
+  /* Charts - ⚠️ PLACEHOLDER: Replace with your custom chart colors */
+  --chart-1: 348 83% 47%;
+  --chart-2: 24 95% 53%;
+  --chart-3: 47 96% 53%;
+  --chart-4: 151 55% 35%;
+  --chart-5: 262 52% 47%;
+
+  /* Sidebar - ⚠️ PLACEHOLDER: Replace with your custom sidebar colors */
+  --sidebar: 204 93.75% 93.7255%;
+  --sidebar-foreground: 216.9231 19.1176% 26.6667%;
+  --sidebar-primary: 330 81% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 330 81% 65%;
+  --sidebar-accent-foreground: 216.9231 19.1176% 26.6667%;
+  --sidebar-border: 220 13.0435% 90.9804%;
+  --sidebar-ring: 330 81% 50%;
+
+  /* Fonts */
+  --font-sans: DM Sans, sans-serif;
+  --font-serif: Lora, serif;
+  --font-mono: IBM Plex Mono, monospace;
+
+  /* Shadows */
+  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 4px 6px -2px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 8px 10px -2px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+
+  /* Misc */
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+  --radius: 1rem;
+}
+
+:root {
+  --primary: 17 69% 61%;
+  --primary-foreground: 0 0% 100%;
+}
+
+:root.dark,
+.theme-linear.dark,
+.theme-glass.dark,
+.theme-midnight.dark,
+.theme-minimal.dark {
+  /* ⚠️ AGENT MUST REPLACE: Dark mode colors - replace with your custom dark palette */
+  --background: 24 33% 10%;
+  --foreground: 41 100% 97%;
+  --card: 24 33% 12%;
+  --card-foreground: 41 100% 97%;
+  --popover: 24 33% 12%;
+  --popover-foreground: 41 100% 97%;
+  /* ⚠️ PLACEHOLDER: Replace with your custom dark mode primary color */
+  --primary: 17 69% 65%;
+  --primary-foreground: 24 33% 10%;
+  --secondary: 24 33% 18%;
+  --secondary-foreground: 41 100% 97%;
+  --muted: 24 33% 15%;
+  --muted-foreground: 24 15% 70%;
+  --accent: 113 39% 40%;
+  --accent-foreground: 41 100% 97%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 24 33% 10%;
+  --border: 24 33% 20%;
+  --input: 24 33% 20%;
+  --ring: 17 69% 65%;
+
+  /* ⚠️ PLACEHOLDER: Replace with your custom dark mode chart colors */
+  --chart-1: 348 83% 65%;
+  --chart-2: 24 95% 63%;
+  --chart-3: 47 96% 65%;
+  --chart-4: 151 55% 55%;
+  --chart-5: 262 52% 65%;
+
+  /* ⚠️ PLACEHOLDER: Replace with your custom dark mode sidebar colors */
+  --sidebar: 24 33% 12%;
+  --sidebar-foreground: 41 100% 97%;
+  --sidebar-primary: 17 69% 65%;
+  --sidebar-primary-foreground: 24 33% 10%;
+  --sidebar-accent: 113 39% 40%;
+  --sidebar-accent-foreground: 41 100% 97%;
+  --sidebar-border: 24 33% 20%;
+  --sidebar-ring: 17 69% 65%;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif;
+}
